@@ -249,7 +249,7 @@ body {
   filter: blur(80px);
   opacity: 0.6;
   animation: float 20s ease-in-out infinite;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
 

@@ -28,19 +28,19 @@ export const HomePage = () => {
         <div
           className="gradient-orb orb-1"
           style={{
-            transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
+            transform: `translate(${mousePosition.x * 0.15}px, ${mousePosition.y * 0.15}px)`
           }}
         ></div>
         <div
           className="gradient-orb orb-2"
           style={{
-            transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)`
+            transform: `translate(${mousePosition.x * -0.12}px, ${mousePosition.y * -0.12}px)`
           }}
         ></div>
         <div
           className="gradient-orb orb-3"
           style={{
-            transform: `translate(calc(-50% + ${mousePosition.x * 0.04}px), calc(-50% + ${mousePosition.y * 0.04}px))`
+            transform: `translate(calc(-50% + ${mousePosition.x * 0.18}px), calc(-50% + ${mousePosition.y * 0.18}px))`
           }}
         ></div>
       </div>
