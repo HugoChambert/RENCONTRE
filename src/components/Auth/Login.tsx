@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = ({ onToggle }: { onToggle: () => void }) => {
   const { signIn } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,6 +17,7 @@ export const Login = ({ onToggle }: { onToggle: () => void }) => {
 
     try {
       await signIn(email, password);
+      navigate('/jobs');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to sign in');
     } finally {

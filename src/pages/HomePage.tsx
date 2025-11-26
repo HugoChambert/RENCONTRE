@@ -1,10 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const HomePage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (user) {
@@ -12,12 +13,36 @@ export const HomePage = () => {
     }
   }, [user, navigate]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <div className="home-page">
       <div className="animated-background">
-        <div className="gradient-orb orb-1"></div>
-        <div className="gradient-orb orb-2"></div>
-        <div className="gradient-orb orb-3"></div>
+        <div
+          className="gradient-orb orb-1"
+          style={{
+            transform: `translate(calc(-50% + ${mousePosition.x * 0.03}px), calc(-50% + ${mousePosition.y * 0.03}px))`
+          }}
+        ></div>
+        <div
+          className="gradient-orb orb-2"
+          style={{
+            transform: `translate(calc(-50% + ${mousePosition.x * -0.02}px), calc(-50% + ${mousePosition.y * -0.02}px))`
+          }}
+        ></div>
+        <div
+          className="gradient-orb orb-3"
+          style={{
+            transform: `translate(calc(-50% + ${mousePosition.x * 0.04}px), calc(-50% + ${mousePosition.y * 0.04}px))`
+          }}
+        ></div>
       </div>
       <section className="hero">
         <div className="hero-content">
