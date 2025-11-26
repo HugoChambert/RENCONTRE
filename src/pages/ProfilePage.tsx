@@ -4,12 +4,13 @@ import { supabase } from '../lib/supabase';
 import { ApplicantProfile } from '../components/Applicant/ApplicantProfile';
 import { EmployerProfile } from '../components/Employer/EmployerProfile';
 import { PostJob } from '../components/Employer/PostJob';
+import { EmployerDashboard } from '../components/Employer/EmployerDashboard';
 
 export const ProfilePage = () => {
   const { user } = useAuth();
   const [userType, setUserType] = useState<'employer' | 'applicant' | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'profile' | 'postjob'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'postjob' | 'dashboard'>('profile');
 
   useEffect(() => {
     if (user) {
@@ -49,6 +50,12 @@ export const ProfilePage = () => {
             Company Profile
           </button>
           <button
+            className={activeTab === 'dashboard' ? 'tab active' : 'tab'}
+            onClick={() => setActiveTab('dashboard')}
+          >
+            Dashboard
+          </button>
+          <button
             className={activeTab === 'postjob' ? 'tab active' : 'tab'}
             onClick={() => setActiveTab('postjob')}
           >
@@ -59,6 +66,7 @@ export const ProfilePage = () => {
 
       {userType === 'applicant' && <ApplicantProfile />}
       {userType === 'employer' && activeTab === 'profile' && <EmployerProfile />}
+      {userType === 'employer' && activeTab === 'dashboard' && <EmployerDashboard />}
       {userType === 'employer' && activeTab === 'postjob' && <PostJob />}
     </div>
   );

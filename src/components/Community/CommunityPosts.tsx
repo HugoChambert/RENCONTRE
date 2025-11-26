@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
+import { ConnectionButton } from './ConnectionButton';
 
 interface Post {
   id: string;
+  user_id: string;
   title: string;
   description: string;
   post_type: 'project' | 'startup' | 'collaboration';
@@ -249,7 +251,7 @@ export const CommunityPosts = () => {
                   </div>
                 )}
 
-                <button className="btn-connect">Connect</button>
+                <ConnectionButton targetUserId={post.user_id} />
               </div>
             ))
           )}

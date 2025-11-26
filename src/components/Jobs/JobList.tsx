@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
+import { JobDetails } from './JobDetails';
 
 interface JobListing {
   id: string;
@@ -18,6 +19,7 @@ export const JobList = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchJobs();
@@ -130,11 +132,18 @@ export const JobList = () => {
                   </div>
                 )}
 
-                <button className="btn-apply">Apply Now</button>
+                <button className="btn-apply" onClick={() => setSelectedJobId(job.id)}>Apply Now</button>
               </div>
             ))
           )}
         </div>
+      )}
+
+      {selectedJobId && (
+        <JobDetails
+          jobId={selectedJobId}
+          onClose={() => setSelectedJobId(null)}
+        />
       )}
     </div>
   );
