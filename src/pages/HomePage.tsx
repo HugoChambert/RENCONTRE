@@ -1,11 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useEffect } from 'react';
 
 export const HomePage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/jobs');
+    }
+  }, [user, navigate]);
 
   return (
     <div className="home-page">
+      <div className="animated-background">
+        <div className="gradient-orb orb-1"></div>
+        <div className="gradient-orb orb-2"></div>
+        <div className="gradient-orb orb-3"></div>
+      </div>
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">Find Your Next Remote Dev Job</h1>
