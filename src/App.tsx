@@ -26,14 +26,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route
-            path="/jobs"
-            element={
-              <ProtectedRoute>
-                <JobsPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/jobs" element={<JobsPage />} />
           <Route
             path="/community"
             element={

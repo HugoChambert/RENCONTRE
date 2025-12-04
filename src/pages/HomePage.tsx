@@ -1,17 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useEffect, useState } from 'react';
 
 export const HomePage = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (user) {
-      navigate('/jobs');
-    }
-  }, [user, navigate]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
