@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export const HomePage = () => {
   const { user } = useAuth();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [autoMove, setAutoMove] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -15,37 +16,54 @@ export const HomePage = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    let animationFrameId: number;
+    let time = 0;
+
+    const animate = () => {
+      time += 0.005;
+      setAutoMove({
+        x: Math.sin(time) * 30,
+        y: Math.cos(time * 0.8) * 30,
+      });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
   return (
     <div className="home-page">
       <div className="animated-background">
         <div
           className="gradient-orb orb-1"
           style={{
-            transform: `translate(${mousePosition.x * 0.15}px, ${mousePosition.y * 0.15}px)`
+            transform: `translate(${mousePosition.x * 0.15 + autoMove.x}px, ${mousePosition.y * 0.15 + autoMove.y}px)`
           }}
         ></div>
         <div
           className="gradient-orb orb-2"
           style={{
-            transform: `translate(${mousePosition.x * -0.12}px, ${mousePosition.y * -0.12}px)`
+            transform: `translate(${mousePosition.x * -0.12 + autoMove.x * -1.2}px, ${mousePosition.y * -0.12 + autoMove.y * -1.2}px)`
           }}
         ></div>
         <div
           className="gradient-orb orb-3"
           style={{
-            transform: `translate(calc(-50% + ${mousePosition.x * 0.18}px), calc(-50% + ${mousePosition.y * 0.18}px))`
+            transform: `translate(calc(-50% + ${mousePosition.x * 0.18 + autoMove.x * 1.5}px), calc(-50% + ${mousePosition.y * 0.18 + autoMove.y * 1.5}px))`
           }}
         ></div>
         <div
           className="gradient-orb orb-4"
           style={{
-            transform: `translate(${mousePosition.x * -0.1}px, ${mousePosition.y * 0.14}px)`
+            transform: `translate(${mousePosition.x * -0.1 + autoMove.x * -0.8}px, ${mousePosition.y * 0.14 + autoMove.y * 0.8}px)`
           }}
         ></div>
         <div
           className="gradient-orb orb-5"
           style={{
-            transform: `translate(${mousePosition.x * 0.13}px, ${mousePosition.y * -0.16}px)`
+            transform: `translate(${mousePosition.x * 0.13 + autoMove.x * 1.3}px, ${mousePosition.y * -0.16 + autoMove.y * -1.3}px)`
           }}
         ></div>
       </div>
