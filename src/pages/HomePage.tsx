@@ -18,13 +18,13 @@ export const HomePage = () => {
 
   useEffect(() => {
     let animationFrameId: number;
-    let time = 0;
+    let startTime = Date.now();
 
     const animate = () => {
-      time += 0.005;
+      const time = (Date.now() - startTime) / 1000;
       setAutoMove({
-        x: Math.sin(time) * 30,
-        y: Math.cos(time * 0.8) * 30,
+        x: Math.sin(time * 0.3) * 200,
+        y: Math.cos(time * 0.25) * 200,
       });
       animationFrameId = requestAnimationFrame(animate);
     };

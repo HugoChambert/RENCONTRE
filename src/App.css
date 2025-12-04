@@ -158,6 +158,8 @@ body {
 .btn-primary:hover:not(:disabled) {
   background: var(--gh-blue-hover);
   border-color: rgba(27,31,36,0.15);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(9,105,218,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .btn-primary:active:not(:disabled) {
@@ -183,6 +185,8 @@ body {
 .btn-secondary:hover {
   background: var(--gh-bg-canvas-inset);
   border-color: var(--gh-border);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .btn-secondary:active {
@@ -204,6 +208,8 @@ body {
 
 .btn-signin:hover {
   background: var(--gh-blue-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(9,105,218,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .btn-signin:active {
@@ -220,6 +226,8 @@ body {
 .btn-signout:hover {
   background: var(--gh-bg-canvas-inset);
   border-color: var(--gh-border);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .btn-signout:active {
@@ -249,7 +257,7 @@ body {
   filter: blur(80px);
   opacity: 0.5;
   animation: float 20s ease-in-out infinite;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
 
@@ -698,6 +706,8 @@ body {
 .filter-buttons button:hover {
   background: var(--gh-bg-canvas-inset);
   border-color: var(--gh-border);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
 .filter-buttons button:active {
@@ -848,6 +858,8 @@ body {
 .btn-apply:hover,
 .btn-connect:hover {
   background: var(--gh-blue-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(9,105,218,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .btn-apply:active,
