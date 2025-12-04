@@ -3,6 +3,9 @@ import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ConnectionButton } from './ConnectionButton';
 import { PostComments } from './PostComments';
+import { LikeButton } from './LikeButton';
+import { ShareButton } from './ShareButton';
+import { CommentCount } from './CommentCount';
 
 interface Post {
   id: string;
@@ -104,6 +107,22 @@ export const CommunityPosts = () => {
       fetchPosts();
     } catch (error) {
       console.error('Error creating post:', error);
+    }
+  };
+
+  const handleDeletePost = async (postId: string) => {
+    if (!confirm('Are you sure you want to delete this post?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('community_posts')
+        .delete()
+        .eq('id', postId);
+
+      if (error) throw error;
+      fetchPosts();
+    } catch (error) {
+      console.error('Error deleting post:', error);
     }
   };
 
@@ -254,10 +273,27 @@ export const CommunityPosts = () => {
                 )}
 
                 <div className="post-actions">
-                  <button className="btn-secondary" onClick={() => setSelectedPostId(post.id)}>
-                    View Comments
+                  <LikeButton postId={post.id} />
+                  <button className="btn-secondary comment-btn" onClick={() => setSelectedPostId(post.id)}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <CommentCount postId={post.id} />
                   </button>
+                  <ShareButton postId={post.id} title={post.title} />
                   <ConnectionButton targetUserId={post.user_id} />
+                  {user?.id === post.user_id && (
+                    <button
+                      className="btn-danger-small"
+                      onClick={() => handleDeletePost(post.id)}
+                      title="Delete post"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  )}
                 </div>
               </div>
             ))
