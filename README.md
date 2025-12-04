@@ -54,9 +54,10 @@ RENCONTRE is a full-featured platform designed specifically for the remote softw
 - View and manage job applications
 
 **Employer Profiles:**
-- Company information and branding
-- Company logo upload
-- Website and company size details
+- Complete company information (name, description, industry)
+- Company branding (logo, avatar)
+- Company details (size, founding year, location)
+- Website and social media links (Twitter)
 - Manage posted job listings
 - View and review applicant submissions
 - Dashboard for tracking hiring pipeline
@@ -102,7 +103,8 @@ The platform uses 9 interconnected tables with comprehensive security policies.
 **profiles**
 - Base user information linked to auth.users
 - User type (employer/applicant)
-- Bio, avatar, contact info
+- Bio, avatar, location
+- Website and social media links (Twitter)
 
 **applicant_profiles**
 - Extended information for job seekers
@@ -113,8 +115,9 @@ The platform uses 9 interconnected tables with comprehensive security policies.
 - Availability status
 
 **employer_profiles**
-- Company information
-- Branding assets
+- Company information and description
+- Industry and founding year
+- Branding assets (logo)
 - Company size and website
 
 **job_listings**
