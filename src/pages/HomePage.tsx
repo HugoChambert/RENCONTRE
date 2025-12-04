@@ -95,14 +95,6 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
-
-      <section className="cta-section">
-        <h2>Ready to Get Started?</h2>
-        <p>Join RENCONTRE today and take the next step in your remote career</p>
-        <Link to={user ? '/jobs' : '/auth'} className="btn-primary btn-large">
-          {user ? 'Explore Opportunities' : 'Sign Up Now'}
-        </Link>
-      </section>
     </div>
   );
 };
