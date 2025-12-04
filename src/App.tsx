@@ -51,7 +51,7 @@ function AppRoutes() {
 
 function App() {
   return (
-    <Router basename="/RENCONTRE">
+    <Router>
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
