@@ -95,6 +95,8 @@ RENCONTRE is a full-featured platform designed specifically for the remote softw
 
 ## Database Architecture
 
+The platform uses 9 interconnected tables with comprehensive security policies.
+
 ### Tables
 
 **profiles**
@@ -136,6 +138,11 @@ RENCONTRE is a full-featured platform designed specifically for the remote softw
 **post_comments**
 - Comments on community posts
 - Threaded discussions
+
+**post_likes**
+- Like/unlike functionality for posts
+- Prevents duplicate likes per user
+- Tracks like counts for engagement metrics
 
 **connections**
 - User networking
@@ -249,11 +256,17 @@ The job marketplace includes sophisticated filtering:
 - **Startup**: Find co-founders or early team members
 - **Collaboration**: Seek partners for specific initiatives
 
-**Engagement:**
-- Comment on posts
-- Connect with post authors
-- Filter by post type and status
-- Real-time comment updates
+**Engagement Features:**
+- **Like System**: Like/unlike posts with real-time count updates
+- **Comments**: Add comments to any post, delete your own comments
+- **Share Options**:
+  - Copy direct link to post
+  - Share to Twitter with auto-populated text
+  - Share to LinkedIn
+  - Share to Facebook
+- **Connect**: Send connection requests directly from posts
+- **Filter & Sort**: Filter by post type, sorted by most recent
+- **Post Management**: Edit post status, delete your own posts
 
 ### Connection System
 
