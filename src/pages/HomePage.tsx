@@ -36,6 +36,18 @@ export const HomePage = () => {
             transform: `translate(calc(-50% + ${mousePosition.x * 0.18}px), calc(-50% + ${mousePosition.y * 0.18}px))`
           }}
         ></div>
+        <div
+          className="gradient-orb orb-4"
+          style={{
+            transform: `translate(${mousePosition.x * -0.1}px, ${mousePosition.y * 0.14}px)`
+          }}
+        ></div>
+        <div
+          className="gradient-orb orb-5"
+          style={{
+            transform: `translate(${mousePosition.x * 0.13}px, ${mousePosition.y * -0.16}px)`
+          }}
+        ></div>
       </div>
       <section className="hero">
         <div className="hero-content">

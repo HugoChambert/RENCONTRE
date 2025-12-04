@@ -247,52 +247,70 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.6;
+  opacity: 0.5;
   animation: float 20s ease-in-out infinite;
-  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
 
 .orb-1 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  top: -100px;
-  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #0969da 0%, #54aeff 100%);
+  top: -150px;
+  left: -150px;
   animation-delay: 0s;
 }
 
 .orb-2 {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, #0969da 0%, #54aeff 100%);
-  bottom: -100px;
-  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #1a7f37 0%, #4ac776 100%);
+  bottom: -120px;
+  right: -120px;
   animation-delay: 7s;
 }
 
 .orb-3 {
-  width: 350px;
-  height: 350px;
-  background: linear-gradient(135deg, #1a7f37 0%, #4ac776 100%);
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation-delay: 14s;
 }
 
+.orb-4 {
+  width: 420px;
+  height: 420px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  top: 20%;
+  right: 10%;
+  animation-delay: 3s;
+}
+
+.orb-5 {
+  width: 380px;
+  height: 380px;
+  background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+  bottom: 30%;
+  left: 15%;
+  animation-delay: 10s;
+}
+
 @keyframes float {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
   25% {
-    transform: translate(50px, -50px) scale(1.1);
+    transform: translate(80px, -70px) scale(1.15) rotate(5deg);
   }
   50% {
-    transform: translate(-30px, 40px) scale(0.9);
+    transform: translate(-50px, 60px) scale(0.85) rotate(-3deg);
   }
   75% {
-    transform: translate(40px, 30px) scale(1.05);
+    transform: translate(60px, 40px) scale(1.1) rotate(7deg);
   }
 }
 
@@ -305,7 +323,7 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin: 0 32px 32px;
+  margin: 64px 32px 32px;
   border-radius: var(--border-radius-lg);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
@@ -968,13 +986,51 @@ body {
   font-size: 14px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .hero {
+    margin: 48px 24px 24px;
+    padding: 60px 24px 80px;
+  }
+
   .hero-title {
-    font-size: 40px;
+    font-size: 48px;
+  }
+
+  .features {
+    padding: 60px 24px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin: 32px 16px 24px;
+    padding: 48px 20px 64px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+    letter-spacing: -1px;
   }
 
   .hero-subtitle {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn-large {
+    width: 100%;
+  }
+
+  .features {
+    padding: 48px 16px;
   }
 
   .features-grid,
@@ -987,6 +1043,11 @@ body {
     gap: 4px;
   }
 
+  .nav a {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
   .auth-container {
     padding: 24px;
   }
@@ -997,6 +1058,104 @@ body {
 
   .page-container {
     padding: 24px 16px;
+  }
+
+  .gradient-orb {
+    filter: blur(60px);
+  }
+
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+  }
+
+  .orb-2 {
+    width: 350px;
+    height: 350px;
+    bottom: -80px;
+    right: -80px;
+  }
+
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb-4 {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orb-5 {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 18px;
+  }
+
+  .hero {
+    margin: 24px 12px 20px;
+    padding: 36px 16px 48px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .btn-large {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  .features {
+    padding: 36px 12px;
+  }
+
+  .feature-card {
+    padding: 24px;
+  }
+
+  .filter-buttons {
+    justify-content: stretch;
+  }
+
+  .filter-buttons button {
+    flex: 1;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .orb-1, .orb-2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb-3, .orb-4 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .orb-5 {
+    width: 220px;
+    height: 220px;
+  }
+
+  .gradient-orb {
+    filter: blur(50px);
+    opacity: 0.4;
   }
 }
 
