@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ConnectionButton } from './ConnectionButton';
+import { PostComments } from './PostComments';
 
 interface Post {
   id: string;
@@ -25,6 +26,7 @@ export const CommunityPosts = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
   const [showForm, setShowForm] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -251,11 +253,23 @@ export const CommunityPosts = () => {
                   </div>
                 )}
 
-                <ConnectionButton targetUserId={post.user_id} />
+                <div className="post-actions">
+                  <button className="btn-secondary" onClick={() => setSelectedPostId(post.id)}>
+                    View Comments
+                  </button>
+                  <ConnectionButton targetUserId={post.user_id} />
+                </div>
               </div>
             ))
           )}
         </div>
+      )}
+
+      {selectedPostId && (
+        <PostComments
+          postId={selectedPostId}
+          onClose={() => setSelectedPostId(null)}
+        />
       )}
     </div>
   );

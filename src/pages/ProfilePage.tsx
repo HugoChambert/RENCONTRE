@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { ApplicantProfile } from '../components/Applicant/ApplicantProfile';
+import { ApplicantApplications } from '../components/Applicant/ApplicantApplications';
 import { EmployerProfile } from '../components/Employer/EmployerProfile';
 import { PostJob } from '../components/Employer/PostJob';
 import { EmployerDashboard } from '../components/Employer/EmployerDashboard';
@@ -10,7 +11,7 @@ export const ProfilePage = () => {
   const { user } = useAuth();
   const [userType, setUserType] = useState<'employer' | 'applicant' | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'profile' | 'postjob' | 'dashboard'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'postjob' | 'dashboard' | 'applications'>('profile');
 
   useEffect(() => {
     if (user) {
@@ -41,6 +42,23 @@ export const ProfilePage = () => {
 
   return (
     <div className="page-container">
+      {userType === 'applicant' && (
+        <div className="tabs">
+          <button
+            className={activeTab === 'profile' ? 'tab active' : 'tab'}
+            onClick={() => setActiveTab('profile')}
+          >
+            My Profile
+          </button>
+          <button
+            className={activeTab === 'applications' ? 'tab active' : 'tab'}
+            onClick={() => setActiveTab('applications')}
+          >
+            My Applications
+          </button>
+        </div>
+      )}
+
       {userType === 'employer' && (
         <div className="tabs">
           <button
@@ -64,7 +82,8 @@ export const ProfilePage = () => {
         </div>
       )}
 
-      {userType === 'applicant' && <ApplicantProfile />}
+      {userType === 'applicant' && activeTab === 'profile' && <ApplicantProfile />}
+      {userType === 'applicant' && activeTab === 'applications' && <ApplicantApplications />}
       {userType === 'employer' && activeTab === 'profile' && <EmployerProfile />}
       {userType === 'employer' && activeTab === 'dashboard' && <EmployerDashboard />}
       {userType === 'employer' && activeTab === 'postjob' && <PostJob />}

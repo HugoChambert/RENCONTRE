@@ -22,8 +22,7 @@ export const ConnectionButton = ({ targetUserId }: ConnectionButtonProps) => {
       const { data } = await supabase
         .from('connections')
         .select('status')
-        .or(`user_id.eq.${user?.id},connected_user_id.eq.${user?.id}`)
-        .or(`user_id.eq.${targetUserId},connected_user_id.eq.${targetUserId}`)
+        .or(`and(user_id.eq.${user?.id},connected_user_id.eq.${targetUserId}),and(user_id.eq.${targetUserId},connected_user_id.eq.${user?.id})`)
         .maybeSingle();
 
       if (data) {
